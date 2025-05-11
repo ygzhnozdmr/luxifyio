@@ -9,7 +9,12 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-    manifest: true
+    manifest: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
   },
   optimizeDeps: {
     exclude: ['lucide-react'],
