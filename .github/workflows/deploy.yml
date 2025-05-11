@@ -47,4 +47,7 @@ jobs:
         uses: actions/deploy-pages@v4
       - name: Configure GitHub Pages
         run: |
-          echo "::set-output name=url::https://${{ github.repository_owner }}.github.io/luxifyio/" 
+          echo "::set-output name=url::https://${{ github.repository_owner }}.github.io/luxifyio/"
+      - name: Wait for deployment
+        run: |
+          sleep 30 
