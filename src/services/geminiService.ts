@@ -2,8 +2,6 @@ import { BusinessInfo, MarketingPlan } from '../types';
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-console.log('Gemini API Key:', GEMINI_API_KEY);
-
 if (!GEMINI_API_KEY) {
   console.error('Gemini API key is missing. Please check your .env file.');
 }
