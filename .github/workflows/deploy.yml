@@ -50,4 +50,16 @@ jobs:
           echo "::set-output name=url::https://${{ github.repository_owner }}.github.io/luxifyio/"
       - name: Wait for deployment
         run: |
-          sleep 30 
+          sleep 30
+      - name: Configure MIME types
+        run: |
+          echo '{
+            "version": 1,
+            "mimeTypes": {
+              "application/javascript": [".js", ".mjs"],
+              "text/javascript": [".js", ".mjs"],
+              "application/json": [".json"],
+              "text/css": [".css"],
+              "image/svg+xml": [".svg"]
+            }
+          }' > .github/mime.types 

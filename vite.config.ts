@@ -13,11 +13,22 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html'
+      },
+      output: {
+        format: 'es',
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     }
   },
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  publicDir: 'public'
+  publicDir: 'public',
+  server: {
+    headers: {
+      'Content-Type': 'application/javascript'
+    }
+  }
 });
