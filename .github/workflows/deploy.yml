@@ -53,6 +53,7 @@ jobs:
           sleep 30
       - name: Configure MIME types
         run: |
+          mkdir -p .github
           echo '{
             "version": 1,
             "mimeTypes": {
