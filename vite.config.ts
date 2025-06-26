@@ -8,11 +8,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: './index.html'
-      },
       output: {
         format: 'iife',
         entryFileNames: 'assets/[name].js',
