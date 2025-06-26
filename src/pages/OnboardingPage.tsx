@@ -49,7 +49,7 @@ const OnboardingPage: React.FC = () => {
       localStorage.setItem('marketingPlan', JSON.stringify(updatedPlan));
       
       // Navigate to dashboard or show success message
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error in onboarding process:', error);
       setStep('visual-upload');
