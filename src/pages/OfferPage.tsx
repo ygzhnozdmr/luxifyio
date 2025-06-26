@@ -324,11 +324,14 @@ const OfferPage: React.FC = () => {
                 Join hundreds of businesses that have successfully transformed into luxury brands with Luxify.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link to="/onboarding">
-                  <Button variant="secondary" size="lg" className="px-8">
-                    Start Free Trial
-                  </Button>
-                </Link>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="px-8"
+                  onClick={() => { setSelected('Start Free Trial'); setContactOpen(true); }}
+                >
+                  Start Free Trial
+                </Button>
                 <Link to="/about">
                   <Button variant="outline" size="lg" className="px-8">
                     Learn More
