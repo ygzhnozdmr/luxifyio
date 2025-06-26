@@ -6,13 +6,13 @@ const Header: React.FC = () => {
   return (
     <header className="bg-navy-900 text-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2 transition-transform hover:scale-105">
+        <a href="https://ygzhnozdmr.github.io/luxifyio/" className="flex items-center space-x-2 transition-transform hover:scale-105">
           <Crown className="w-8 h-8 text-gold-400" />
           <h1 className="text-2xl font-serif font-bold">
             <span className="text-white">Luxi</span>
             <span className="text-gold-400">fy</span>
           </h1>
-        </Link>
+        </a>
         
         <nav>
           <ul className="flex items-center space-x-6">
