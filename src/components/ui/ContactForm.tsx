@@ -113,26 +113,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-xl shadow-md max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-xl shadow-md max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-2">İletişim Formu</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input label="Ad" name="firstName" value={form.firstName} onChange={handleChange} error={errors.firstName} required />
         <Input label="Soyad" name="lastName" value={form.lastName} onChange={handleChange} error={errors.lastName} required />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input label="E-posta" name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} required />
-        <Input label="Telefon" name="phone" type="tel" value={form.phone} onChange={handleChange} error={errors.phone} />
+        <Input label="Telefon (Opsiyonel)" name="phone" type="tel" value={form.phone} onChange={handleChange} error={errors.phone} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input label="Şirket Adı" name="company" value={form.company} onChange={handleChange} error={errors.company} required />
         <Select label="İş Türü" name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Select label="Konu" name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required />
-        <Input label="Bütçe (Opsiyonel)" name="budget" value={form.budget} onChange={handleChange} />
+        <div className="flex gap-2">
+          <Input label="Bütçe" name="budget" value={form.budget} onChange={handleChange} className="flex-1" />
+          <Input label="Zaman" name="timeline" value={form.timeline} onChange={handleChange} className="flex-1" />
+        </div>
       </div>
-      <Input label="Zaman (Opsiyonel)" name="timeline" value={form.timeline} onChange={handleChange} />
-      <Textarea label="Mesajınız" name="message" value={form.message} onChange={handleChange} error={errors.message} required rows={6} />
+      <Textarea label="Mesajınız" name="message" value={form.message} onChange={handleChange} error={errors.message} required rows={4} />
       {errors.message && <div className="text-red-500 text-sm">{errors.message}</div>}
       <div className="flex justify-end gap-2">
         <Button type="button" variant="outline" onClick={onClose}>Vazgeç</Button>
@@ -140,7 +142,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
           {loading ? 'Gönderiliyor...' : 'Gönder'}
         </Button>
       </div>
-      <p className="text-xs text-gray-500 mt-4">
+      <p className="text-xs text-gray-500 mt-2">
         Formu göndererek gizlilik politikamızı ve hizmet şartlarımızı kabul etmiş olursunuz. Bilgileriniz sadece başvurunuza yanıt vermek ve lüks pazarlama içgörüleri sunmak için kullanılacaktır.
       </p>
     </form>
