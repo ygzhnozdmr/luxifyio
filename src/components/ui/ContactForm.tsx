@@ -113,7 +113,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2 p-3 bg-white rounded-xl shadow-md max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-2 px-3 py-6 bg-white rounded-xl shadow-md max-w-lg mx-auto">
       <h2 className="text-xl font-bold mb-1">İletişim Formu</h2>
       <div className="grid grid-cols-2 gap-2">
         <Input name="firstName" value={form.firstName} onChange={handleChange} error={errors.firstName} required placeholder="Ad" />
