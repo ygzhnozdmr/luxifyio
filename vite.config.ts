@@ -8,15 +8,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: './index.html'
-      },
       output: {
-        entryFileNames: 'assets/[name].[hash].js',
-        chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]'
+        format: 'iife',
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     }
   },
@@ -26,7 +23,7 @@ export default defineConfig({
   publicDir: 'public',
   server: {
     headers: {
-      'Content-Type': 'text/javascript'
+      'Content-Type': 'application/javascript'
     }
   }
 });
