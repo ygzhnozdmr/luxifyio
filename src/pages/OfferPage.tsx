@@ -350,7 +350,7 @@ const OfferPage: React.FC = () => {
       {/* Modal ContactForm */}
       {contactOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-xl shadow-2xl p-0 max-w-2xl w-full relative">
+          <div className="bg-white rounded-xl shadow-2xl p-0 max-w-3xl w-full relative">
             <ContactForm selectedPackage={selected} onClose={() => setContactOpen(false)} />
           </div>
         </div>
