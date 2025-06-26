@@ -113,36 +113,32 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-xl shadow-md max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-2">İletişim Formu</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Input label="Ad" name="firstName" value={form.firstName} onChange={handleChange} error={errors.firstName} required />
-        <Input label="Soyad" name="lastName" value={form.lastName} onChange={handleChange} error={errors.lastName} required />
+    <form onSubmit={handleSubmit} className="space-y-2 p-3 bg-white rounded-xl shadow-md max-w-lg mx-auto">
+      <h2 className="text-xl font-bold mb-1">İletişim Formu</h2>
+      <div className="grid grid-cols-2 gap-2">
+        <Input name="firstName" value={form.firstName} onChange={handleChange} error={errors.firstName} required placeholder="Ad" />
+        <Input name="lastName" value={form.lastName} onChange={handleChange} error={errors.lastName} required placeholder="Soyad" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Input label="E-posta" name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} required />
-        <Input label="Telefon (Opsiyonel)" name="phone" type="tel" value={form.phone} onChange={handleChange} error={errors.phone} />
+      <div className="grid grid-cols-3 gap-2">
+        <Input name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} required placeholder="E-posta" />
+        <Input name="phone" type="tel" value={form.phone} onChange={handleChange} error={errors.phone} placeholder="Telefon (opsiyonel)" />
+        <Input name="company" value={form.company} onChange={handleChange} error={errors.company} required placeholder="Şirket Adı" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Input label="Şirket Adı" name="company" value={form.company} onChange={handleChange} error={errors.company} required />
-        <Select label="İş Türü" name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required />
+      <div className="grid grid-cols-4 gap-2">
+        <Select name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required className="min-w-0" />
+        <Select name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required className="min-w-0" />
+        <Input name="budget" value={form.budget} onChange={handleChange} placeholder="Bütçe (opsiyonel)" className="min-w-0" />
+        <Input name="timeline" value={form.timeline} onChange={handleChange} placeholder="Zaman (opsiyonel)" className="min-w-0" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Select label="Konu" name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required />
-        <div className="flex gap-2">
-          <Input label="Bütçe" name="budget" value={form.budget} onChange={handleChange} className="flex-1" />
-          <Input label="Zaman" name="timeline" value={form.timeline} onChange={handleChange} className="flex-1" />
-        </div>
-      </div>
-      <Textarea label="Mesajınız" name="message" value={form.message} onChange={handleChange} error={errors.message} required rows={4} />
+      <Textarea name="message" value={form.message} onChange={handleChange} error={errors.message} required rows={3} placeholder="Mesajınız" />
       {errors.message && <div className="text-red-500 text-sm">{errors.message}</div>}
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end gap-2 mt-1">
         <Button type="button" variant="outline" onClick={onClose}>Vazgeç</Button>
         <Button type="submit" size="lg" disabled={loading} icon={!loading ? <Send className="w-4 h-4" /> : undefined}>
           {loading ? 'Gönderiliyor...' : 'Gönder'}
         </Button>
       </div>
-      <p className="text-xs text-gray-500 mt-2">
+      <p className="text-xs text-gray-500 mt-1">
         Formu göndererek gizlilik politikamızı ve hizmet şartlarımızı kabul etmiş olursunuz. Bilgileriniz sadece başvurunuza yanıt vermek ve lüks pazarlama içgörüleri sunmak için kullanılacaktır.
       </p>
     </form>
