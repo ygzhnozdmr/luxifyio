@@ -125,8 +125,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
         <Input name="company" value={form.company} onChange={handleChange} error={errors.company} required placeholder="Şirket Adı" />
       </div>
       <div className="grid grid-cols-4 gap-4">
-        <Select name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required className="min-w-0" />
-        <Select name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required className="min-w-0" />
+        <Select name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required className="w-full" />
+        <Select name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required className="w-full" />
         <Input name="budget" value={form.budget} onChange={handleChange} placeholder="Bütçe (opsiyonel)" className="min-w-0" />
         <Input name="timeline" value={form.timeline} onChange={handleChange} placeholder="Zaman (opsiyonel)" className="min-w-0" />
       </div>
