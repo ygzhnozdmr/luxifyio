@@ -5,9 +5,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from '../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import ContactForm from '../components/ui/ContactForm';
 
 const OfferPage: React.FC = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  const [contactOpen, setContactOpen] = useState(false);
+  const [selected, setSelected] = useState<string | undefined>(undefined);
 
   const packages = [
     {
@@ -220,15 +223,14 @@ const OfferPage: React.FC = () => {
                         </li>
                       ))}
                     </ul>
-                    <Link to="/onboarding" className="block">
-                      <Button 
-                        className="w-full" 
-                        variant={pkg.popular ? 'secondary' : 'primary'}
-                        size="lg"
-                      >
-                        {pkg.cta}
-                      </Button>
-                    </Link>
+                    <Button
+                      className="w-full"
+                      variant={pkg.popular ? 'secondary' : 'primary'}
+                      size="lg"
+                      onClick={() => { setSelected(pkg.name); setContactOpen(true); }}
+                    >
+                      {pkg.cta}
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -264,7 +266,12 @@ const OfferPage: React.FC = () => {
                       <div className="text-2xl font-bold text-navy-900 mb-4">
                         ${addon.price}
                       </div>
-                      <Button variant="outline" size="sm" className="w-full">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full"
+                        onClick={() => { setSelected(addon.name); setContactOpen(true); }}
+                      >
                         Add to Package
                       </Button>
                     </CardContent>
@@ -336,6 +343,15 @@ const OfferPage: React.FC = () => {
         </section>
       </main>
       <Footer />
+
+      {/* Modal ContactForm */}
+      {contactOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-xl shadow-2xl p-0 max-w-lg w-full relative">
+            <ContactForm selectedPackage={selected} onClose={() => setContactOpen(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
