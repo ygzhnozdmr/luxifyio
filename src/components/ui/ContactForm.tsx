@@ -113,18 +113,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2 px-3 py-6 bg-white rounded-xl shadow-md max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-1">İletişim Formu</h2>
-      <div className="grid grid-cols-2 gap-2">
+    <form onSubmit={handleSubmit} className="space-y-4 px-6 py-8 bg-white rounded-xl shadow-md max-w-lg mx-auto">
+      <h2 className="text-xl font-bold mb-4">İletişim Formu</h2>
+      <div className="grid grid-cols-2 gap-4">
         <Input name="firstName" value={form.firstName} onChange={handleChange} error={errors.firstName} required placeholder="Ad" />
         <Input name="lastName" value={form.lastName} onChange={handleChange} error={errors.lastName} required placeholder="Soyad" />
       </div>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-4">
         <Input name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} required placeholder="E-posta" />
         <Input name="phone" type="tel" value={form.phone} onChange={handleChange} error={errors.phone} placeholder="Telefon (opsiyonel)" />
         <Input name="company" value={form.company} onChange={handleChange} error={errors.company} required placeholder="Şirket Adı" />
       </div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-4">
         <Select name="businessType" value={form.businessType} onChange={handleChange} options={businessTypes} required className="min-w-0" />
         <Select name="subject" value={form.subject} onChange={handleChange} options={subjects.concat(selectedPackage ? [{ value: selectedPackage, label: selectedPackage }] : [])} required className="min-w-0" />
         <Input name="budget" value={form.budget} onChange={handleChange} placeholder="Bütçe (opsiyonel)" className="min-w-0" />
@@ -132,13 +132,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedPackage, onClose }) =
       </div>
       <Textarea name="message" value={form.message} onChange={handleChange} error={errors.message} required rows={3} placeholder="Mesajınız" />
       {errors.message && <div className="text-red-500 text-sm">{errors.message}</div>}
-      <div className="flex justify-end gap-2 mt-1">
+      <div className="flex justify-end gap-4 mt-4">
         <Button type="button" variant="outline" onClick={onClose}>Vazgeç</Button>
         <Button type="submit" size="lg" disabled={loading} icon={!loading ? <Send className="w-4 h-4" /> : undefined}>
           {loading ? 'Gönderiliyor...' : 'Gönder'}
         </Button>
       </div>
-      <p className="text-xs text-gray-500 mt-1">
+      <p className="text-xs text-gray-500 mt-4">
         Formu göndererek gizlilik politikamızı ve hizmet şartlarımızı kabul etmiş olursunuz. Bilgileriniz sadece başvurunuza yanıt vermek ve lüks pazarlama içgörüleri sunmak için kullanılacaktır.
       </p>
     </form>
