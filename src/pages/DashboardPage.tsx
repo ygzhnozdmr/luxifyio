@@ -74,6 +74,13 @@ export const DashboardPage = () => {
             >
               Tips
             </button>
+            <Button
+              variant="secondary"
+              onClick={() => navigate('/offer')}
+              className="ml-2"
+            >
+              Luxury Offer
+            </Button>
           </div>
         </div>
 
